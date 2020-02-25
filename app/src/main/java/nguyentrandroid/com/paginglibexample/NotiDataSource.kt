@@ -3,6 +3,7 @@ package nguyentrandroid.com.paginglibexample
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import androidx.paging.PagedList
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -13,7 +14,7 @@ import nguyentrandroid.com.paginglibexample.utils.NetworkState
 import kotlin.coroutines.CoroutineContext
 
 
-class NotiDataSource(coroutineContext: CoroutineContext) : PageKeyedDataSource<String, Hit>() {
+class NotiDataSource(coroutineContext: CoroutineContext) : PageKeyedDataSource<String, Hit>(){
 
     private val apiService = ApiClient.getClient()
         .create(ApiService::class.java)
@@ -40,6 +41,7 @@ class NotiDataSource(coroutineContext: CoroutineContext) : PageKeyedDataSource<S
                         response.body().let {
                             l = it?.hits?.total!!
                             val key: Int = it?.hits?.hits?.size!! - 1
+                            Log.d("Size",""+it.hits.hits.size)
                             callback.onResult(
                                 it?.hits?.hits ?: emptyList(),
                                 null,

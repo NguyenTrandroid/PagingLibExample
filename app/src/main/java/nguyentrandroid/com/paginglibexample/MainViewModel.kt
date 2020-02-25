@@ -24,8 +24,7 @@ class MainViewModel : ViewModel() {
     }
     fun getLikes(): LiveData<PagedList<Hit>> = notisLiveData
 
-    private fun initializedPagedListBuilder(config: PagedList.Config):
-            LivePagedListBuilder<String, Hit> {
+    private fun initializedPagedListBuilder(config: PagedList.Config): LivePagedListBuilder<String, Hit> {
 
         val dataSourceFactory = object : DataSource.Factory<String, Hit>() {
             override fun create(): DataSource<String, Hit> {

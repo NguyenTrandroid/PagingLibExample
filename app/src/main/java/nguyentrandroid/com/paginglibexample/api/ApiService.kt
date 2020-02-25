@@ -8,12 +8,7 @@ import retrofit2.Response
 
 
 interface ApiService {
-    @GET("/r/aww/hot.json")
-    suspend fun fetchPosts(
-        @Query("a") loadSize: Int = 10,
-        @Query("after") after: String? = null,
-        @Query("before") before: String? = null
-    ): Response<RedditApiResponse>
+
 
     @GET("/likes")
     suspend fun likes(
